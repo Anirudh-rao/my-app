@@ -6,33 +6,42 @@ import './index.css';
  * Return HTML skeleton for todo list.
  */
 function App() {
+
+  const items = [
+    {
+      id: 1,
+      text: 'Take out the trash',
+      completed: false
+    },
+    {
+      id: 2,
+      text: 'Buy bread',
+      completed: false
+    },
+    {
+      id: 3,
+      text: 'Teach penguins to fly',
+      completed: true
+    }
+  ];
+  
   return (
     <div className="container">
       <div className="row">
         <div className="todolist">
           <h1>Todos</h1>
           <ul className="list-unstyled">
-            <li className="ui-state-default">
-              <div className="checkbox">
+           {
+             items && items.map(item =>
+              <li key={item.id} className="ui-state-default">
+                <div  class="checkbox">
                   <label>
-                    <input type="checkbox" value=""/>Take out the trash
+                  <input type="checkbox" checked={item.completed}/>{item.text}
                   </label>
-              </div>
-            </li>
-            <li className="ui-state-default">
-              <div className="checkbox">
-                  <label>
-                    <input type="checkbox" value=""/>Buy bread
-                  </label>
-              </div>
-            </li>
-            <li className="ui-state-default">
-              <div className="checkbox">
-                <label>
-                  <input type="checkbox" value=""/>Teach penguins to fly
-                </label>
-              </div>
-            </li>
+                </div>
+              </li>
+              )
+           }
           </ul>
         </div>
       </div>
